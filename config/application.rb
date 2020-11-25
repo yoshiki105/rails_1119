@@ -33,5 +33,8 @@ module Asagao
     config.generators.system_tests = nil
 
     config.time_zone = "Tokyo"
+
+    # ストロングパラメータを無効化
+    config.action_controller.permit_all_parameters = true
   end
 end
