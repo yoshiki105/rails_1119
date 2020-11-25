@@ -9,6 +9,10 @@ html
   body
     #container
       header = render "shared/header"
-      main = yield
+      main
+        - if flash.notice
+          p.notice = flash.notice
+
+        = yield
       aside#sidebar = render "shared/sidebar"
       footer = render "shared/footer"
