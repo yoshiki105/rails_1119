@@ -21,6 +21,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'slim-rails'
 gem 'html2slim'
+gem 'email_validator', '~> 1.6'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

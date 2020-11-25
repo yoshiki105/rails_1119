@@ -1,4 +1,27 @@
 class Member < ApplicationRecord
+  # バリデーション
+  validates :number,
+                presence: true,
+                numericality: {
+                  only_integer: true,
+                  greater_than: 0,
+                  less_than: 100,
+                  allow_blank: true,
+                },
+                uniqueness: true
+
+  validates :name,
+              presence: true,
+              format: { with: /^[A-Za-z][A-Za-z0-9]*$/, allow_blank: true },
+              length: { minimum: 2, maximum: 20, allow_blank: true },
+              uniqueness: { case_sensitive: false }
+
+  validates :full_name,
+              presence: true,
+              length: { maximum: 20 }
+
+  validates :email, email: { allow_blank: true }  # gemによる拡張表現
+
   # クラスメソッド
   class << self
     def search(query)
@@ -11,6 +34,5 @@ class Member < ApplicationRecord
       end
       return rel
     end
-
   end
 end
