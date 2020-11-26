@@ -1,4 +1,7 @@
 class Member < ApplicationRecord
+  # セッションの設定
+  has_secure_password
+
   # バリデーション
   validates :number,
                 presence: true,
