@@ -1,12 +1,14 @@
 h2 ログイン
-form#ligin_form
-  div
-    label ユーザー名：
-    input type="text"
+- if flash.alert
+  p.alert = flash.alert
 
+/ 送信先は:session、つまりSessionsControllerのcreateメソッド。
+= form_tag :session, id: "login_form" do
+  div
+    label ユーザー名
+    input type="text" name="name"
   div
     label パスワード：
-    input type="password"
-
+    input type="password" name="password"
   div
     input type="submit" value="ログイン"
