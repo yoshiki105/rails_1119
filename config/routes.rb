@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     get "lesson/step#{n}(/:name)", to: "lesson#step#{n}"
   end
 
+  # 普通のリソース
   resources :members do
     get "search", on: :collection
   end
+
+  # 単数リソース
+  resource :session, only: [:create, :destroy]
 end
