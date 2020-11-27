@@ -29,6 +29,11 @@ class Member < ApplicationRecord
 
   validates :email, email: { allow_blank: true }  # gemによる拡張表現
 
+  # 現在の（変更前の）パスワード属性
+  attr_accessor :current_password
+  # パスワードは常に存在するように設定
+  validates :password, presence: { if: :current_password }
+
   # クラスメソッド
   class << self
     def search(query)

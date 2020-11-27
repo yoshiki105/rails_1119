@@ -13,6 +13,9 @@ ja:
         birthday: 誕生日
         email: メールアドレス
         administrator: 管理者
+        current_password: 現在のパスワード
+        password: 新しいパスワード
+        password_confirmation: 新しいパスワードの確認
     errors:
       messages:
         invalid: の書式が正しくありません。
