@@ -3,5 +3,5 @@
 h1 = @page_title
 
 = form_with model: @member, local: true do |form|
-  = render "form", form: form
+  = render "shared/member_form", form: form
   div = form.submit

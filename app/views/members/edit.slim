@@ -5,5 +5,5 @@ h1 = @page_title
 div.toolbar = link_to "会員の詳細に戻る", @member
 
 = form_with model: @member, local: true, method: "patch" do |form|
-  = render "form", form: form
+  = render "shared/member_form", form: form
   div = form.submit
