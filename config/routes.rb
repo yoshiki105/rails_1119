@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   # 単数リソース
   resource :session, only: [:create, :destroy]
+  resource :account, only: [:show, :edit, :update]
 end
