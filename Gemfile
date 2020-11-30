@@ -23,6 +23,8 @@ gem 'slim-rails'
 gem 'html2slim'
 gem 'email_validator', '~> 1.6'
 gem 'rails-i18n'
+gem 'kaminari'
+gem 'kaminari-i18n'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

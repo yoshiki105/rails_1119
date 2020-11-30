@@ -1,5 +1,5 @@
 - @articles.each do |article|
   h2 = article.title
   p
-    = truncate article.body, length: 80    # 80字以上は省略して表示
+    = truncate article.body, length: 80
     = link_to "もっと読む", article
