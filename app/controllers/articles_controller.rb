@@ -4,6 +4,12 @@ class ArticlesController < ApplicationController
   # 記事一覧
   def index
     @articles = Article.order(released_at: :desc)
+
+    @articles = @articles.open_to_the_public unless current_member
+
+    unless current_member&.administrator?
+      @articles = @articles.visible
+    end
   end
 
   # 記事詳細
@@ -35,7 +41,7 @@ class ArticlesController < ApplicationController
   def update
     @article = Article.find(params[:id])
     @article.assign_attributes(params[:article])
-    if @atrticle.save
+    if @article.save
       redirect_to @article, notice: 'ニュース記事を更新しました。'
     else
       render 'edit'
