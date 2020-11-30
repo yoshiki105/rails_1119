@@ -7,9 +7,9 @@ class ArticlesController < ApplicationController
 
     @articles = @articles.open_to_the_public unless current_member
 
-    unless current_member&.administrator?
-      @articles = @articles.visible
-    end
+    @articles = @articles.visible unless current_member&.administrator?
+
+    @articles = @articles.page(params[:page]).per(5)
   end
 
   # 記事詳細
@@ -18,9 +18,7 @@ class ArticlesController < ApplicationController
 
     articles = articles.open_to_the_public unless current_member
 
-    unless current_member&.administrator?
-      articles = articles.visible
-    end
+    articles = articles.visible unless current_member&.administrator?
 
     @article = articles.find(params[:id])
   end
@@ -62,5 +60,4 @@ class ArticlesController < ApplicationController
     @article.destroy
     redirect_to :articles, notice: "記事「#{@article.title}」を削除しました。"
   end
-
 end
