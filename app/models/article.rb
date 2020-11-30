@@ -9,23 +9,25 @@ class Article < ApplicationRecord
 
   def no_expiration=(val)
     # 引数valがtrueまたは1の時、@no_expirationをtrueにする。
-    @no_expiration = val.in?([true, "1"])
+    @no_expiration = val.in?([true, '1'])
   end
 
   before_validation do
     self.expired_at = nil if @no_expiration
   end
 
-  # errors.add(:expired_at, :expired_at_too_old)
+  validate do
+    errors.add(:expired_at, :expired_at_too_old) if expired_at && expired_at < released_at
+  end
 
   # 誰でも見れる記事を取得
-  scope :open_to_the_public, -> { where(member_only: false)}
+  scope :open_to_the_public, -> { where(member_only: false) }
 
   # 現在日時が掲載開始日時と掲載終了日時の間にある記事を取得
-  scope :visible, -> do
+  scope :visible, lambda {
     now = Time.current
 
-    where("released_at <= ?", now)
-    .where("expired_at > ? OR expired_at IS NULL", now)
-  end
+    where('released_at <= ?', now)
+      .where('expired_at > ? OR expired_at IS NULL', now)
+  }
 end
