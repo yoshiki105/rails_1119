@@ -1,5 +1,4 @@
 class Entry < ApplicationRecord
-  # モデル間の関連付け
   belongs_to :author, class_name: 'Member', foreign_key: 'member_id'
 
   STATUS_VALUES = %w[draft member_only public].freeze
@@ -10,12 +9,11 @@ class Entry < ApplicationRecord
 
   scope :common, -> { where(status: 'public') }
   scope :published, -> { where('status <> ?', 'draft') }
-  scope :full, lambda { |_member|
-    where('status <> ? OR member_id = ?', 'draft', member_id)
-  }
-  scope :readable_for, lambda(member) { member ? full(member) : common }
+  scope :full, lambda { |member|
+                 where('member_id = ? OR status <> ?', member.id, 'draft')
+               }
+  scope :readable_for, ->(member) { member ? full(member) : common }
 
-  # クラスメソッド
   class << self
     def status_text(status)
       I18n.t("activerecord.attributes.entry.status_#{status}")
