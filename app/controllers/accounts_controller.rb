@@ -13,9 +13,9 @@ class AccountsController < ApplicationController
     @member = current_member
     @member.assign_attributes(params[:account])
     if @member.save
-      redirect_to :account, notice: "アカウント情報を更新しました。"
+      redirect_to :account, notice: 'アカウント情報を更新しました。'
     else
-      render "edit"
+      render 'edit'
     end
   end
 end

@@ -1,8 +1,8 @@
 module ApplicationHelper
   def page_title
-    title = "Morning Glory"
-    title = @page_title + '-' + title if @page_title
-    return title
+    title = 'Morning Glory'
+    title = "#{@page_title}-#{title}" if @page_title
+    title
   end
 
   def menu_link_to(text, path, options = {})
@@ -15,6 +15,4 @@ module ApplicationHelper
       end
     end
   end
-
-
 end
