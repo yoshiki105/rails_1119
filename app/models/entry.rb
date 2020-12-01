@@ -14,4 +14,15 @@ class Entry < ApplicationRecord
     where('status <> ? OR member_id = ?', 'draft', member_id)
   }
   scope :readable_for, lambda(member) { member ? full(member) : common }
+
+  # クラスメソッド
+  class << self
+    def status_text(status)
+      I18n.t("activerecord.attributes.entry.status_#{status}")
+    end
+
+    def status_options
+      STATUS_VALUES.map { |status| [status_text(status), status] }
+    end
+  end
 end

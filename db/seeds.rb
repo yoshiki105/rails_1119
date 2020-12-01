@@ -1,7 +1,7 @@
 # db/seeds/developmentの下に"テーブル名.rb"があれば、それをrequireメソッドで実行する
 # Rails.rootで、アプリケーションのパスを取得できる。(~/省略/asagao)
 # そこにjoinメソッドを使って、パスを組み立てる
-table_names = %w[members articles]
+table_names = %w[members articles entries]
 table_names.each do |table_name|
   path = Rails.root.join('db/seeds', Rails.env, table_name + '.rb')
   if File.exist?(path)
