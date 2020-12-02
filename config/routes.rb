@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # 普通のリソース
   resources :members do
     get 'search', on: :collection
+    resources :entries, only: [:index] # ネストされたリソース
   end
 
   # 単数リソース
