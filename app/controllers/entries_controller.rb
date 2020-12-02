@@ -16,7 +16,7 @@ class EntriesController < ApplicationController
 
   # 記事詳細
   def show
-    @entries = Entry.readable_for(current_member).find(params[:id])
+    @entry = Entry.readable_for(current_member).find(params[:id])
   end
 
   def new; end
