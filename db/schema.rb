@@ -10,40 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_01_023122) do
-
-  create_table "articles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title", null: false
-    t.text "body", null: false
-    t.datetime "released_at", null: false
-    t.datetime "expired_at"
-    t.boolean "member_only", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+ActiveRecord::Schema.define(version: 20_201_201_023_122) do
+  create_table 'articles', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.string 'title', null: false
+    t.text 'body', null: false
+    t.datetime 'released_at', null: false
+    t.datetime 'expired_at'
+    t.boolean 'member_only', default: false, null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "entries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "member_id", null: false
-    t.string "title", null: false
-    t.text "body"
-    t.datetime "posted_at", null: false
-    t.string "status", default: "draft", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["member_id"], name: "index_entries_on_member_id"
+  create_table 'entries', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.bigint 'member_id', null: false
+    t.string 'title', null: false
+    t.text 'body'
+    t.datetime 'posted_at', null: false
+    t.string 'status', default: 'draft', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['member_id'], name: 'index_entries_on_member_id'
   end
 
-  create_table "members", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "number", null: false
-    t.string "name", null: false
-    t.string "full_name"
-    t.string "email"
-    t.date "birthday"
-    t.integer "sex", default: 1, null: false
-    t.boolean "administrator", default: false, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "password_digest"
+  create_table 'members', options: 'ENGINE=InnoDB DEFAULT CHARSET=utf8', force: :cascade do |t|
+    t.integer 'number', null: false
+    t.string 'name', null: false
+    t.string 'full_name'
+    t.string 'email'
+    t.date 'birthday'
+    t.integer 'sex', default: 1, null: false
+    t.boolean 'administrator', default: false, null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'password_digest'
   end
-
 end
