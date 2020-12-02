@@ -19,7 +19,13 @@ class EntriesController < ApplicationController
     @entry = Entry.readable_for(current_member).find(params[:id])
   end
 
-  def new; end
+  # 新規登録フォーム
+  def new
+    @entry = Entry.new(posted_at: Time.current)
+  end
 
-  def edit; end
+  # 編集フォーム
+  def edit
+    @entry = current_member.entries.find(params[:id])
+  end
 end
