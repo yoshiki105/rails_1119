@@ -9,6 +9,10 @@ ul
     li = link_to article.title, article
 
 h2 会員のブログ
+- entries = Entry.readable_for(current_member).order(posted_at: :desc).limit(5)
+
 ul
-  - 5.times do |i|
-    li = link_to "ブログの見出し", "#"
+  - entries.each do |entry|
+    li
+      | #{link_to entry.title, entry} by
+      |  #{link_to entry.author.name, [entry.author, :entries]}
