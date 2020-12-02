@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   resource :password, only: %i[show edit update]
 
   resources :articles
+  resources :entries
 end
