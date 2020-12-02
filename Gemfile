@@ -24,6 +24,8 @@ gem 'html2slim'
 gem 'kaminari'
 gem 'kaminari-i18n'
 gem 'rails-i18n'
+gem 'rubocop', require: false
+gem 'rubocop-rails', require: false
 gem 'slim-rails'
 
 # Use Active Storage variant
