@@ -28,4 +28,28 @@ class EntriesController < ApplicationController
   def edit
     @entry = current_member.entries.find(params[:id])
   end
+
+  # 新規作成
+  def create
+    @entry = Entry.new(params[:entry])
+    @entry.author = current_member
+    if @entry.save
+      redirect_to @entry, notice: "記事を作成しました。"
+    else
+      render "new"
+    end
+  end
+
+  # 更新
+  def update
+    @entry = current_member.entries.find(params[:id])
+    @entry.assign_attributes(params[:entry])
+    if @entry.save
+      redirect_to @entry, notice: "記事を更新しました。"
+    else
+      render "edit"
+    end
+  end
+
+
 end
