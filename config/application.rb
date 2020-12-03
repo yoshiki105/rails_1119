@@ -35,7 +35,7 @@ module Asagao
     config.time_zone = 'Tokyo'
     config.i18n.default_locale = :ja
 
-    # ストロングパラメータを無効化
-    config.action_controller.permit_all_parameters = true
+    # ストロングパラメータを有効化
+    config.action_controller.permit_all_parameters = false
   end
 end
