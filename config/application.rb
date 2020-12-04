@@ -37,5 +37,11 @@ module Asagao
 
     # ストロングパラメータを有効化
     config.action_controller.permit_all_parameters = false
+
+    # config.exceptions_appでルーティングエラーを独自に定義する
+    # ActionControllerに伝わらない例外は、ErrorsControllerのshowアクションを呼ぶ。
+    config.exceptions_app = ->(env) do
+      ErrorsController.action(:show).call(env)
+    end
   end
 end
